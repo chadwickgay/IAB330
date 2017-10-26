@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="WheresMyStuff.Views.AddItemPage"
+    Title="New Item">
+    
+<ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Save"
+            Text="Save"
+            Order="Primary"
+            Clicked="Handle_Clicked"
+            AutomationId="SaveItem"
+        Command="{Binding SubmitCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="5,10">
+
+            <Label FontAttributes="Bold" Text="Name:"/>
+            <Entry Placeholder="Item Name" Text="{Binding Name}" AutomationId="ItemNameEntry"/> 
+
+             
+
+            <Label FontAttributes="Bold" Text="Description:"/>
+            <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Description}" AutomationId="ItemDescEditor"/> 
+
+            <Button
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Text="Add Photo"/>
+                
+
+            <Image Source="default_box"></Image>
+           
+           
+        </StackLayout>
+        </ScrollView>
+        </ContentPage.Content>
+    
+</ContentPage>
