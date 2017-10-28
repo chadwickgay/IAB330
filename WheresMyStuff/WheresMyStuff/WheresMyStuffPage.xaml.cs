@@ -1,49 +1,42 @@
-﻿using Xamarin.Forms;
+﻿using NavigationMasterDetail.MenuItems;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
-namespace WheresMyStuff
+namespace wheresmystuff
 {
-    public partial class WheresMyStuffPage : MasterDetailPage
+    public partial class wheresmystuffPage : MasterDetailPage
     {
-		void Handle_Items_Clicked(object sender, System.EventArgs e)
-		{
-			Detail = new NavigationPage(new Views.ItemsListPage());
-			// Hide the master page
-			IsPresented = false;
-		}
+        public List<MasterPageItem> _menuList { get; set; }
 
-		void Handle_Boxes_Clicked(object sender, System.EventArgs e)
-		{
-		    Detail = new NavigationPage(new Views.BoxesListPage());
-			// Hide the master page
-			IsPresented = false;
-		}
-
-		void Handle_Rooms_Clicked(object sender, System.EventArgs e)
-		{
-			Detail = new NavigationPage(new Views.RoomsListPage());
-			// Hide the master page
-			IsPresented = false;
-		}
-
-		void Handle_DataExport_Clicked(object sender, System.EventArgs e)
-		{
-			Detail = new NavigationPage(new Views.DataExportPage());
-			// Hide the master page
-			IsPresented = false;
-		}
-
-		void Handle_Settings_Clicked(object sender, System.EventArgs e)
-		{
-			Detail = new NavigationPage(new Views.SettingsPage());
-			// Hide the master page
-			IsPresented = false;
-		}
-
-        public WheresMyStuffPage()
+        public wheresmystuffPage()
         {
             InitializeComponent();
 
             Detail = new NavigationPage(new Views.ItemsListPage());
+
+            _menuList = new List<MasterPageItem>();
+
+            _menuList.Add(new MasterPageItem() { Title = "Items", TargetType = typeof(Views.ItemsListPage) });
+            _menuList.Add(new MasterPageItem() { Title = "Boxes", TargetType = typeof(Views.BoxesListPage) });
+            _menuList.Add(new MasterPageItem() { Title = "Rooms", TargetType = typeof(Views.RoomsListPage) });
+            _menuList.Add(new MasterPageItem() { Title = "Data Export", TargetType = typeof(Views.DataExportPage) });
+            _menuList.Add(new MasterPageItem() { Title = "Settings", TargetType = typeof(Views.SettingsPage) });
+
+            navigationDrawerList.ItemsSource = _menuList;
+        }
+
+        private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+            var item = (MasterPageItem)e.SelectedItem;
+            Type page = item.TargetType;
+
+            Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            IsPresented = false;
         }
     }
 }

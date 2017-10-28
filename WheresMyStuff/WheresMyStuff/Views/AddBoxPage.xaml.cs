@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using WheresMyStuff.ViewModels;
+using wheresmystuff.ViewModels;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class AddBoxPage : ContentPage
     {
+        void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            //var room = RoomPicker.Items[RoomPicker.SelectedIndex];
+
+           // DisplayAlert(room, "selected value", "OK");
+        }
+
         void Handle_Save_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PopAsync();
@@ -17,6 +24,7 @@ namespace WheresMyStuff.Views
             InitializeComponent();
 
             BindingContext = new BoxesViewModel();
+
         }
     }
 }

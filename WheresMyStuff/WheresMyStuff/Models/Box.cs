@@ -4,15 +4,17 @@ using System.ComponentModel;
 using System.Text;
 using SQLite.Net.Attributes;
 
-namespace WheresMyStuff.Models
+namespace wheresmystuff.Models
 
 {
     public class Box
     {
-        [PrimaryKey] [AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int Id { get; set; }
 
         public string BoxNumber { get; set; }
+        public string Room { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
         //URL for our item image!

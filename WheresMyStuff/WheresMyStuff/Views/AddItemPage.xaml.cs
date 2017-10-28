@@ -1,5 +1,5 @@
-﻿using WheresMyStuff.Interfaces;
-using WheresMyStuff.ViewModels;
+﻿using wheresmystuff.Interfaces;
+using wheresmystuff.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class AddItemPage : ContentPage
     {
@@ -21,6 +21,13 @@ namespace WheresMyStuff.Views
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+             //var room = BoxPicker.Items[BoxPicker.SelectedIndex];
+
+             //DisplayAlert(room, "selected value", "OK");
         }
     }
 }

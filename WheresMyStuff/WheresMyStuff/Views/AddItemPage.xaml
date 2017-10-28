@@ -2,10 +2,10 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="WheresMyStuff.Views.AddItemPage"
+    x:Class="wheresmystuff.Views.AddItemPage"
     Title="New Item">
-    
-<ContentPage.ToolbarItems>
+
+    <ContentPage.ToolbarItems>
         <ToolbarItem
             Name="Save"
             Text="Save"
@@ -25,27 +25,28 @@
 
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Padding="5,10">
+            <StackLayout Padding="5,10">
 
-            <Label FontAttributes="Bold" Text="Name:"/>
-            <Entry Placeholder="Item Name" Text="{Binding Name}" AutomationId="ItemNameEntry"/> 
+                <Label FontAttributes="Bold" Text="Name:"/>
+                <Entry Placeholder="Item Name" Text="{Binding Name}" AutomationId="ItemNameEntry"/>
 
-             
+                 <Label FontAttributes="Bold" Text="Box:"/>
+                <Picker x:Name="BoxPicker" SelectedIndexChanged="Handle_SelectedIndexChanged" ItemsSource="{Binding Box_List}" SelectedItem="{Binding BoxNumber}"></Picker>
+    
+                <Label FontAttributes="Bold" Text="Description:"/>
+                <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Description}" AutomationId="ItemDescEditor"/>
 
-            <Label FontAttributes="Bold" Text="Description:"/>
-            <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Description}" AutomationId="ItemDescEditor"/> 
-
-            <Button
+                <Button
                     VerticalOptions="End"
                     HorizontalOptions="End"
                     Text="Add Photo"/>
-                
 
-            <Image Source="default_box"></Image>
-           
-           
-        </StackLayout>
+
+                <Image Source="default_box"></Image>
+
+
+            </StackLayout>
         </ScrollView>
-        </ContentPage.Content>
-    
+    </ContentPage.Content>
+
 </ContentPage>

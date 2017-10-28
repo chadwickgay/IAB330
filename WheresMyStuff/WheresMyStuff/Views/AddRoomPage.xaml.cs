@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using WheresMyStuff.ViewModels;
+using wheresmystuff.ViewModels;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class AddRoomPage : ContentPage
     {

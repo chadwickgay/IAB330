@@ -1,32 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <MasterDetailPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:WheresMyStuff" 
-    x:Class="WheresMyStuff.WheresMyStuffPage"
+    x:Class="wheresmystuff.wheresmystuffPage"
     Title="Master Page"
-    MasterBehavior="Popover"
-    >
+    MasterBehavior="Popover">
 
-    <MasterDetailPage.Master >     
+    <MasterDetailPage.Master>
         <ContentPage Padding="10" BackgroundColor="#1061A3" Title="Master" Icon="hamburger.png" AutomationId="HamburgerStack">
             <ContentPage.Content>
-                <StackLayout Margin="5,30,5,5">
-
-                    <Button x:Name="btn_Items" Text="Items" TextColor="White" Clicked="Handle_Items_Clicked" AutomationId="ItemsMenu"></Button>
-
-                    <Button x:Name="btn_Boxes" Text="Boxes" TextColor="White"  Clicked="Handle_Boxes_Clicked" AutomationId="BoxesMenu"></Button>
-
-                    <Button x:Name="btn_Rooms" Text="Rooms" TextColor="White"  Clicked="Handle_Rooms_Clicked" AutomationId="RoomsMenu"></Button>
-
-                    <Button x:Name="btn_DataExport" Text="Data Export" TextColor="White"  Clicked="Handle_DataExport_Clicked" AutomationId="DataExportMenu"></Button>
-
-                    <Button x:Name="btn_Settings" Text="Settings" TextColor="White"  Clicked="Handle_Settings_Clicked" AutomationId="SettingsMenu"></Button>
+                <StackLayout Orientation="Vertical">
+                    <StackLayout HeightRequest="75">
+                        <Label Text="Where's my stuff?"
+                             FontSize="20"
+                             VerticalOptions="CenterAndExpand"
+                             TextColor="White"
+                             HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <ListView x:Name="navigationDrawerList"
+                            RowHeight="60"
+                            SeparatorVisibility="None"
+                            ItemSelected="OnMenuItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0,10,0,10" Spacing="20">
+                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="#e8e8e8"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </ContentPage.Content>
         </ContentPage>
     </MasterDetailPage.Master>
-    
+
     <MasterDetailPage.Detail>
 
         <ContentPage Padding="10">

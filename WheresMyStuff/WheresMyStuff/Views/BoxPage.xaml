@@ -2,8 +2,8 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="WheresMyStuff.Views.BoxPage">
-	<ContentPage.ToolbarItems>
+    x:Class="wheresmystuff.Views.BoxPage">
+    <ContentPage.ToolbarItems>
         <ToolbarItem
             Name="Edit"
             Text="Edit"
@@ -21,31 +21,29 @@
 
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Padding="5,10">
+            <StackLayout Padding="5,10">
 
-             <Image Source="default_box"></Image>
+                <Image Source="default_box"></Image>
 
-            <Label FontAttributes="Bold" Text="Description:"/>
-            <Label Text = "A lava lamp (or Astro lamp) is a decorative novelty item, invented in 1963 by British accountant Edward Craven Walker, the founder of the British lighting company Mathmos."/>
+                <Label FontAttributes="Bold" Text="Description:"/>
+                <Label Text = "{Binding Description}"/>
 
-            <Label FontAttributes="Bold" Text="Box Details:"/>
-            <Label Text = "Box Number: 1"/>
-            <Label Text = "Date Added: 20/08/2017"/>
-            <Label Text = "Location: None"/>
+                <Label FontAttributes="Bold" Text="Box Number:"/>
+                <Label Text = "{Binding BoxNumber}"/>
 
-            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                    <Button Text="Label"/>
+                <Label FontAttributes="Bold" Text="Room:"/>
+                <Label Text = "{Binding Room}"/>
+
+                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                        <Button Text="Label"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                        <Button Text="QR Code"/>
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                    <Button Text="QR Code"/>
-                </StackLayout>
+
             </StackLayout>
-
-            <Label FontAttributes="Bold" Text="Contents:"/>
-            <Label Text = "Insert ListView here (same as ItemsListPage)"/>
-
-        </StackLayout>
         </ScrollView>
-        </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

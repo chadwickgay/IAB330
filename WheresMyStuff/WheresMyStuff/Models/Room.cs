@@ -1,7 +1,7 @@
 ﻿using SQLite.Net.Attributes;
-using WheresMyStuff.Models;
+using wheresmystuff.Models;
 
-namespace WheresMyStuff.Models
+namespace wheresmystuff.Models
 {
     public class Room
     {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="WheresMyStuff.Views.RoomsPage"
+    Title="Item">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Edit"
+            Text="Edit"
+            Order="Primary"
+            Clicked="Handle_Edit_Clicked"
+            />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5,10">
+
+            <Label FontAttributes="Bold" Text="Name:"/>
+            <Label Text = "{Binding Name}"/>
+
+            <Label FontAttributes="Bold" Text="Description:"/>
+            <Label Text = "{Binding Description}"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
+

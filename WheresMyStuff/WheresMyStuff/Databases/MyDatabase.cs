@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using SQLite.Net;
 using SQLite.Net.Interop;
-using WheresMyStuff.Interfaces;
-using WheresMyStuff.Models;
+using wheresmystuff.Interfaces;
+using wheresmystuff.Models;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Databases
+namespace wheresmystuff.Databases
 {
     public class MyDatabase
     {
-        static SQLiteConnection database; 
+        static SQLiteConnection database;
 
         public MyDatabase()
         {
             database = new SQLiteConnection(DependencyService.Get<ISQLitePlatform>(),
-            DependencyService.Get<IFileHelper>().GetLocalPath("WheresMyStuffSqlite.db3"));
+            DependencyService.Get<IFileHelper>().GetLocalPath("wheresmystuffSqlite.db3"));
             database.CreateTable<Item>();
             database.CreateTable<Room>();
             database.CreateTable<Box>();
         }
         // Items
-        public int Insert(Item item){
+        public int Insert(Item item)
+        {
             var db_item = database.Insert((item));
             database.Commit();
             return db_item;
         }
 
-        public int InsertOrUpdate(Item item){
+        public int InsertOrUpdate(Item item)
+        {
             int num;
-            if (database.Table<Item>().Any(x=> x.Id == item.Id)){
+            if (database.Table<Item>().Any(x => x.Id == item.Id))
+            {
                 num = database.Update(item);
             }
             num = database.Insert((item));
@@ -38,18 +41,22 @@ namespace WheresMyStuff.Databases
             return num;
         }
 
-        public int Delete(Item item){
+        public int Delete(Item item)
+        {
             int num;
             num = database.Delete<Item>(item.Id);
             database.Commit();
             return num;
         }
 
-        public List<Item> GetAllItems(){
-            return database.Table<Item>().ToList();
+        public List<Item> GetAllItems()
+        {
+            //Added sorting here
+            return database.Table<Item>().OrderBy(n => n.Name).ToList();
         }
 
-        public Item GetItem (int key){
+        public Item GetItem(int key)
+        {
             return database.Table<Item>().Where(x => x.Id == key).FirstOrDefault();
         }
         // Boxes

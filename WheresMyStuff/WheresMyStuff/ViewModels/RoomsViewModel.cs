@@ -1,18 +1,19 @@
-﻿using WheresMyStuff.Helpers;
-using WheresMyStuff.Models;
+﻿using wheresmystuff.Helpers;
+using wheresmystuff.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using WheresMyStuff.Databases;
+using wheresmystuff.Databases;
 using Xamarin.Forms;
 using System;
 
-namespace WheresMyStuff.ViewModels
+namespace wheresmystuff.ViewModels
 {
     public class RoomsViewModel : ViewModelBase
     {
 
         private readonly MyDatabase db;
+
 
         private string name;
 
@@ -56,28 +57,9 @@ namespace WheresMyStuff.ViewModels
             });
             Name = String.Empty;
             Description = String.Empty;
+
+            MessagingCenter.Send<String>("insert", "refresh");
         }
 
     }
 }
-
-/*
-using WheresMyStuff.Helpers;
-using WheresMyStuff.Models;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-namespace WheresMyStuff.ViewModels
-{
-	public class RoomsViewModel
-	{
-		public ObservableCollection<Room> Rooms { get; set; }
-		//public ObservableCollection<Grouping<string, Monkey>> MonkeysGrouped { get; set; }
-
-		public RoomsViewModel()
-		{
-			Rooms = RoomHelper.Rooms;
-		}
-	}
-}
-*/

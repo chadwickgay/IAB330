@@ -2,10 +2,10 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="WheresMyStuff.Views.ItemPage"
+    x:Class="wheresmystuff.Views.ItemPage"
     Title="Item">
     
-	<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem
             Name="Edit"
             Text="Edit"
@@ -27,15 +27,16 @@
         <StackLayout Padding="5,10">
 
             <Label FontAttributes="Bold" Text="Name:"/>
-            <Label Text = "Lava Lamp"/>
-
-            <Label FontAttributes="Bold" Text="Box Number:"/>
-            <Label Text = "2"/>
+            <Label Text = "{Binding Name}"/>
 
             <Label FontAttributes="Bold" Text="Description:"/>
-            <Label Text = "A lava lamp (or Astro lamp) is a decorative novelty item, invented in 1963 by British accountant Edward Craven Walker, the founder of the British lighting company Mathmos."/>
+            <Label Text = "{Binding Description}"/>
 
+            <Label FontAttributes="Bold" Text="Box Number:"/>
+            <Label Text = "{Binding BoxNumber}"/>
+            <!-- enable this once photo upoload is added
             <Image Source="default_box"></Image>
+                -->
            
         </StackLayout>
         </ScrollView>

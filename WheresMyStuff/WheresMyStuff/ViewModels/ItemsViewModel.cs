@@ -1,76 +1,117 @@
-﻿using WheresMyStuff.Helpers;
-using WheresMyStuff.Models;
+﻿using wheresmystuff.Helpers;
+using wheresmystuff.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using WheresMyStuff.Databases;
+using wheresmystuff.Databases;
 using Xamarin.Forms;
 using System;
+using System.Collections.Generic;
 
-namespace WheresMyStuff.ViewModels
+namespace wheresmystuff.ViewModels
 {
     public class ItemsViewModel : ViewModelBase
-	{
+    {
 
-        private readonly MyDatabase db;
+        private readonly MyDatabase _db;
+        private ObservableCollection<Box> _boxes;
+        List<string> box_list = new List<string>();
 
-		private string name;
 
-		public string Name
-		{
-			get { return name; }
-			set
-			{
-				name = value;
-				OnPropertyChanged();
-			}
-		}
+        private string box;
+        public string Box
+        {
+            get { return box; }
+            set
+            {
+                box = value;
+                OnPropertyChanged();
+            }
+        }
 
-		private string boxNumber;
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
 
-		public string BoxNumber
-		{
-			get { return boxNumber; }
-			set
-			{
-				boxNumber = value;
-				OnPropertyChanged();
-			}
-		}
+        private string _boxNumber;
 
-        private string description;
+        public string BoxNumber
+        {
+            get { return _boxNumber; }
+            set
+            {
+                _boxNumber = value;
+                OnPropertyChanged();
+            }
+        }
 
-		public string Description
-		{
-			get { return description; }
-			set
-			{
-				description = value;
-				OnPropertyChanged();
-			}
-		}
+        private string _description;
+
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand SubmitCommand { protected set; get; }
-		public ItemsViewModel()
-		{
+        public ItemsViewModel()
+        {
 
-            db = new MyDatabase();
+            _db = new MyDatabase();
 
             SubmitCommand = new Command(Submit);
-		}
 
-		public void Submit()
-		{
-			db.Insert(new Item()
-			{
-				Name = this.Name,
+            GetListOfBoxNumbers();
+        }
+
+        public void Submit()
+        {
+            _db.Insert(new Item()
+            {
+                Name = this.Name,
                 BoxNumber = BoxNumber,
                 Description = Description
-			});
-			Name = String.Empty;
-			BoxNumber = String.Empty;
-			Description = String.Empty;
-		}
+            });
 
-	}
+            Name = String.Empty;
+            BoxNumber = String.Empty;
+            Description = String.Empty;
+
+            MessagingCenter.Send<String>("insert", "refresh");
+        }
+
+        public ObservableCollection<Box> Boxes
+        {
+            get { return _boxes; }
+            set
+            {
+                _boxes = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void GetListOfBoxNumbers()
+        {
+            Boxes = new ObservableCollection<Box>(_db.GetAllBoxes());
+
+            foreach (var box in Boxes)
+            {
+                box_list.Add(box.BoxNumber);
+            }
+        }
+
+        public List<string> Box_List => box_list;
+
+    }
 }

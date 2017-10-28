@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WheresMyStuff.Interfaces
+namespace wheresmystuff.Interfaces
 {
     public interface IFileHelper
     {

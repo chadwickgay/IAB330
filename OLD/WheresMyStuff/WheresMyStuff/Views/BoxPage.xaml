@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="WheresMyStuff.Views.BoxPage">
+	<ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Edit"
+            Text="Edit"
+            Order="Primary"
+            Clicked="Handle_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="5,10">
+
+             <Image Source="default_box"></Image>
+
+            <Label FontAttributes="Bold" Text="Description:"/>
+            <Label Text = "{Binding Description}"/>
+
+            <Label FontAttributes="Bold" Text="Box Number:"/>
+            <Label Text = "{Binding BoxNumber}"/>
+
+            <Label FontAttributes="Bold" Text="Location:"/>
+            <Label Text = "{Binding Location}"/>
+
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Button Text="Label"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Button Text="QR Code"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label FontAttributes="Bold" Text="Contents:"/>
+            <Label Text = "Insert ListView here (same as ItemsListPage)"/>
+
+        </StackLayout>
+        </ScrollView>
+        </ContentPage.Content>
+</ContentPage>

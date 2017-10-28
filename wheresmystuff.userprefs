@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="wheresmystuff/wheresmystuff/Views/ItemsListPage.xaml">
+    <Files>
+      <File FileName="wheresmystuff/wheresmystuff/Views/BoxPage.xaml" Line="35" Column="49" />
+      <File FileName="wheresmystuff/wheresmystuff/Views/BoxPage.xaml.cs" Line="12" Column="13" />
+      <File FileName="wheresmystuff/wheresmystuff/Views/EditBoxPage.xaml" Line="7" Column="5" />
+      <File FileName="wheresmystuff/wheresmystuff/Views/EditBoxPage.xaml.cs" Line="5" Column="1" />
+      <File FileName="wheresmystuff/wheresmystuff/Views/ItemsListPage.xaml" Line="45" Column="15" />
+      <File FileName="wheresmystuff/wheresmystuff/Views/ItemsListPage.xaml.cs" Line="23" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.wheresmystuff.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F51DD646-1A96-43EB-862A-87A18C4B9757" />
+  <MonoDevelop.Ide.ItemProperties.wheresmystuff.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MultiItemStartupConfigurations />
+</Properties>

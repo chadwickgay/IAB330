@@ -1,14 +1,14 @@
 ﻿using Xamarin.Forms;
 
-namespace WheresMyStuff
+namespace wheresmystuff
 {
     public partial class App : Application
     {
         public App()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            MainPage = new WheresMyStuffPage();
+            MainPage = new wheresmystuffPage();
         }
 
         protected override void OnStart()

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="WheresMyStuff.Views.CloudSync" 
+    Title="Cloud Synchronization">
+    <ContentPage.Content>
+        <StackLayout Padding="5,10">
+            
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Label Text="Enable synchronization"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="End">
+                    <Switch IsToggled="False"></Switch>
+                </StackLayout></StackLayout>
+
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Label Text="Last synchronization"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="End">
+                    <Label Text="--/--/--"></Label>
+                </StackLayout>
+            </StackLayout>
+            <Label Text=""></Label>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                    <Label Text="Sync interval"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  HorizontalOptions="End">
+                    <Label Text="5 mins"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <Button Text="Force Sync Now"/>
+
+                
+            </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

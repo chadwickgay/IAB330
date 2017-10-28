@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using wheresmystuff.ViewModels;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class RoomsPage : ContentPage
     {
         public RoomsPage()
         {
             InitializeComponent();
+
+            BindingContext = new RoomsViewModel();
         }
 
         void Handle_Edit_Clicked(object sender, System.EventArgs e)

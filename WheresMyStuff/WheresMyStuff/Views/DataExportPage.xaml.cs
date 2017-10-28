@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class DataExportPage : ContentPage
     {

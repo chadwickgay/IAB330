@@ -2,7 +2,7 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="WheresMyStuff.Views.ItemsListPage" 
+    x:Class="wheresmystuff.Views.ItemsListPage" 
     Title="Items">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Text="Add Item" Order="Primary" Clicked="Handle_Add_Clicked" AutomationId="AddItem" />
@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="5,10">
-                <SearchBar x:Name="search" Placeholder="Search" />
+                <SearchBar x:Name="search" Placeholder="Search" Text="{Binding SearchText}" />
                 <ListView x:Name="list" ItemsSource="{Binding Items}" ItemSelected="Handle_ItemSelected" AutomationId="ItemsList" RowHeight="55">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -31,10 +31,8 @@
                                         <ColumnDefinition Width="40">
                                         </ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" LineBreakMode="TailTruncation">
-                                    </Label>
-                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Font="Small" TextColor="Gray" LineBreakMode="TailTruncation">
-                                    </Label>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Font="Small" TextColor="Gray" LineBreakMode="TailTruncation"></Label>
                                     <!-- <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="{Binding Image}" Aspect="AspectFill" />-->
                                 </Grid>
                             </ViewCell>

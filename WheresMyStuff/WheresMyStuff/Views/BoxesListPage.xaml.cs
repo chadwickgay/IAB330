@@ -1,7 +1,8 @@
-﻿using WheresMyStuff.ViewModels;
+﻿using wheresmystuff.Models;
+using wheresmystuff.ViewModels;
 using Xamarin.Forms;
 
-namespace WheresMyStuff.Views
+namespace wheresmystuff.Views
 {
     public partial class BoxesListPage : ContentPage
     {
@@ -19,7 +20,16 @@ namespace WheresMyStuff.Views
 
         void Handle_BoxSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new BoxPage());
+            var box = e.SelectedItem as Box;
+
+            if (box == null)
+            {
+                return;
+            }
+
+            var boxesView = new BoxPage();
+            boxesView.BindingContext = box;
+            Navigation.PushAsync(boxesView);
         }
     }
 }

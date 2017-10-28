@@ -1,34 +1,35 @@
-﻿
-using WheresMyStuff.Helpers;
-using WheresMyStuff.Models;
+﻿using wheresmystuff.Helpers;
+using wheresmystuff.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using WheresMyStuff.Databases;
+using wheresmystuff.Databases;
 using Xamarin.Forms;
 using System;
+using System.Collections.Generic;
 
-namespace WheresMyStuff.ViewModels
+namespace wheresmystuff.ViewModels
 {
     public class BoxesViewModel : ViewModelBase
     {
 
         private readonly MyDatabase db;
+        private ObservableCollection<Room> _rooms;
+        private ObservableCollection<Item> _items;
+        List<string> room_list = new List<string>();
 
-        private string name;
-
-        public string Name
+        private string room;
+        public string Room
         {
-            get { return name; }
+            get { return room; }
             set
             {
-                name = value;
+                room = value;
                 OnPropertyChanged();
             }
         }
 
         private string boxNumber;
-
         public string BoxNumber
         {
             get { return boxNumber; }
@@ -40,7 +41,6 @@ namespace WheresMyStuff.ViewModels
         }
 
         private string description;
-
         public string Description
         {
             get { return description; }
@@ -52,47 +52,78 @@ namespace WheresMyStuff.ViewModels
         }
 
         public ICommand SubmitCommand { protected set; get; }
-        public BoxesViewModel()
-        {
-
-            db = new MyDatabase();
-
-            SubmitCommand = new Command(Submit);
-        }
 
         public void Submit()
         {
             db.Insert(new Box()
             {
                 BoxNumber = BoxNumber,
-                Description = Description
+                Description = Description,
+                Room = Room
             });
             BoxNumber = String.Empty;
             Description = String.Empty;
+            Room = String.Empty;
+
+            MessagingCenter.Send<String>("insert", "refresh");
+        }
+
+        // To get list of rooms 
+        public ObservableCollection<Room> Rooms
+        {
+            get { return _rooms; }
+            set
+            {
+                _rooms = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void GetListOfRooms()
+        {
+            Rooms = new ObservableCollection<Room>(db.GetAllRooms());
+
+            foreach (var room in Rooms)
+            {
+                room_list.Add(room.Name);
+            }
+        }
+
+        public List<string> Room_List => room_list;
+
+        // To display respective items on the page
+
+        public ObservableCollection<Item> Items
+        {
+            get { return _items; }
+            set
+            {
+                _items = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void GetItemsInsideBox()
+        {
+            // Just trying to display all items in the db on the box page
+            Items = new ObservableCollection<Item>(db.GetAllItems());
+
+            OnPropertyChanged();
+        }
+
+        // Constructor 
+
+        public BoxesViewModel()
+        {
+
+            db = new MyDatabase();
+
+            SubmitCommand = new Command(Submit);
+
+            GetListOfRooms();
+
+            GetItemsInsideBox();
         }
 
     }
 }
-
-/*
-using WheresMyStuff.Helpers;
-using WheresMyStuff.Models;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-namespace WheresMyStuff.ViewModels
-{
-	public class BoxesViewModel
-	{
-		public ObservableCollection<Box> Boxes { get; set; }
-
-		public BoxesViewModel()
-		{
-            // This is just palceholder data
-            Boxes = BoxHelper.Boxes;
-		}
-
-	}
-
-}
-*/

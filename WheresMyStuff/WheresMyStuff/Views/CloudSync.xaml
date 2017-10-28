@@ -1,19 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="WheresMyStuff.Views.CloudSync" 
+    x:Class="wheresmystuff.Views.CloudSync" 
     Title="Cloud Synchronization">
     <ContentPage.Content>
         <StackLayout Padding="5,10">
-            
+
             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                     <Label Text="Enable synchronization"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  HorizontalOptions="End">
                     <Switch IsToggled="False"></Switch>
-                </StackLayout></StackLayout>
+                </StackLayout>
+            </StackLayout>
 
             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
@@ -35,8 +36,8 @@
 
             <Button Text="Force Sync Now"/>
 
-                
-            </StackLayout>
+
+        </StackLayout>
 
 
     </ContentPage.Content>
