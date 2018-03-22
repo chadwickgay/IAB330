@@ -11,6 +11,9 @@ namespace wheresmystuff.Helpers
 
         public static ObservableCollection<Item> Items { get; set; }
 
+        /// <summary>
+        /// Setup some default Items for debugging/sample
+        /// </summary>
         static ItemHelper()
         {
 

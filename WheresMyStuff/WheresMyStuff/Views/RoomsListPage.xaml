@@ -33,7 +33,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
                                     <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Font="Small" TextColor="Gray" LineBreakMode="TailTruncation"></Label>
-                                    <!-- <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="{Binding Image}" Aspect="AspectFill" />-->
+                                    <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="default_room" Aspect="AspectFill" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

@@ -10,6 +10,9 @@ namespace wheresmystuff.Helpers
     {
         public static ObservableCollection<Room> Rooms { get; set; }
 
+        /// <summary>
+        /// Setup some Rooms for debugging/sample
+        /// </summary>
         static RoomHelper()
         {
 

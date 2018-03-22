@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wheresmystuff.Android", "wheresmystuff\wheresmystuff.Android\wheresmystuff.Android.csproj", "{1DE69316-B00B-4DC9-BAA7-4F108661F30D}"
 EndProject
@@ -96,6 +96,7 @@ Global
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|iPhone.Build.0 = Debug|iPhone
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
@@ -105,9 +106,11 @@ Global
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Release|iPhone.Build.0 = Release|iPhone
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{E9981FE5-3003-4AEE-B899-CF0E3CB5B2DF}.Debug|Any CPU.Build.0 = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D97BA7FE-2052-4D53-A296-EAAF07248981}
 	EndGlobalSection
 EndGlobal

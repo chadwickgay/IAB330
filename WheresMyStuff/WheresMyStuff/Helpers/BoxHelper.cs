@@ -11,6 +11,9 @@ namespace wheresmystuff.Helpers
 
         public static ObservableCollection<Box> Boxes { get; set; }
 
+        /// <summary>
+        /// Setup some default Boxes for debugging/sample
+        /// </summary>
         static BoxHelper()
         {
 

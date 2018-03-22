@@ -7,6 +7,7 @@ using wheresmystuff.Databases;
 using Xamarin.Forms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace wheresmystuff.ViewModels
 {
@@ -15,57 +16,52 @@ namespace wheresmystuff.ViewModels
 
         private readonly MyDatabase db;
         private ObservableCollection<Room> _rooms;
-        private ObservableCollection<Item> _items;
         List<string> room_list = new List<string>();
 
-        private string room;
-        public string Room
+        private Box _box;
+        public Box Box
         {
-            get { return room; }
+            get { return _box;  }
             set
             {
-                room = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string boxNumber;
-        public string BoxNumber
-        {
-            get { return boxNumber; }
-            set
-            {
-                boxNumber = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string description;
-        public string Description
-        {
-            get { return description; }
-            set
-            {
-                description = value;
-                OnPropertyChanged();
+                _box = value;
+                OnPropertyChanged("Box");
             }
         }
 
         public ICommand SubmitCommand { protected set; get; }
-
+        /// <summary>
+        /// Handle inserting a new Box
+        /// </summary>
         public void Submit()
         {
-            db.Insert(new Box()
-            {
-                BoxNumber = BoxNumber,
-                Description = Description,
-                Room = Room
-            });
-            BoxNumber = String.Empty;
-            Description = String.Empty;
-            Room = String.Empty;
-
+            db.Insert(Box);
             MessagingCenter.Send<String>("insert", "refresh");
+        }
+
+        /// <summary>
+        /// Handle updating a Box
+        /// </summary>
+        public ICommand UpdateCommand { protected set; get; }
+        public void Update()
+        {
+            db.InsertOrUpdate(Box);
+            MessagingCenter.Send<String>("update", "refresh");
+        }
+
+        public ObservableCollection<Item> Items
+        {
+            get
+            {
+                //Ignoring null values as it caused LINQ to crash
+                //TODO: Add validation on items page
+                if (!String.IsNullOrEmpty(_box.BoxNumber)) { 
+                    return new ObservableCollection<Item>(db.GetAllItems()
+                        .Where(i => i.BoxNumber != null && i.BoxNumber.Contains((string)_box.BoxNumber))
+                    );
+                }
+                return null;
+            }
         }
 
         // To get list of rooms 
@@ -79,6 +75,9 @@ namespace wheresmystuff.ViewModels
             }
         }
 
+        /// <summary>
+        /// Get a list of Rooms that the Box could be in
+        /// </summary>
         public void GetListOfRooms()
         {
             Rooms = new ObservableCollection<Room>(db.GetAllRooms());
@@ -91,38 +90,15 @@ namespace wheresmystuff.ViewModels
 
         public List<string> Room_List => room_list;
 
-        // To display respective items on the page
-
-        public ObservableCollection<Item> Items
-        {
-            get { return _items; }
-            set
-            {
-                _items = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public void GetItemsInsideBox()
-        {
-            // Just trying to display all items in the db on the box page
-            Items = new ObservableCollection<Item>(db.GetAllItems());
-
-            OnPropertyChanged();
-        }
-
         // Constructor 
-
         public BoxesViewModel()
         {
-
             db = new MyDatabase();
 
             SubmitCommand = new Command(Submit);
+            UpdateCommand = new Command(Update);
 
             GetListOfRooms();
-
-            GetItemsInsideBox();
         }
 
     }

@@ -3,6 +3,9 @@ using wheresmystuff.Models;
 
 namespace wheresmystuff.Models
 {
+    /// <summary>
+    /// A Room contains Boxes
+    /// </summary>
     public class Room
     {
         [PrimaryKey]
@@ -10,8 +13,5 @@ namespace wheresmystuff.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        // Uncomment when we implement Box
-        //public Box[] Boxes { get; set; }
     }
 }

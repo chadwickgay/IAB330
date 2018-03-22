@@ -22,6 +22,9 @@ namespace wheresmystuff.ViewModels
         private ObservableCollection<Room> _rooms;
         private string _searchText;
 
+        /// <summary>
+        /// Handle searching Rooms
+        /// </summary>
         public string SearchText
         {
             get { return _searchText; }
@@ -35,7 +38,8 @@ namespace wheresmystuff.ViewModels
 
                 if (!String.IsNullOrWhiteSpace(_searchText))
                 {
-                    Rooms = new ObservableCollection<Room>(_rooms.Where(i => i.Name.Contains(_searchText)));
+                    Rooms = new ObservableCollection<Room>(_rooms.Where(i => i.Name.Contains(_searchText)
+                                                                        || i.Description.Contains(_searchText)));
                 }
                 OnPropertyChanged();
             }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using wheresmystuff.ViewModels;
 using Xamarin.Forms;
+using wheresmystuff.Models;
 
 namespace wheresmystuff.Views
 {
@@ -13,12 +15,15 @@ namespace wheresmystuff.Views
             Navigation.PopAsync();
         }
 
-        public EditBoxPage()
+        public EditBoxPage(Box box)
         {
+            BoxesViewModel vm = new BoxesViewModel();
+            vm.Box = box;
+            BindingContext = vm;
+
             InitializeComponent();
 
-            //BindingContext = new BoxesViewModel();
-        }
 
+        }
     }
 }

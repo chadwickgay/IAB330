@@ -28,18 +28,16 @@
             <StackLayout Padding="5,10">
 
                 <Label FontAttributes="Bold" Text="Description:"/>
-                <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Description}" AutomationId="BoxDescEditor"/> 
+                <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Box.Description}" AutomationId="BoxDescEditor"/> 
 
                 <Label FontAttributes="Bold" Text="Box Number:"/>
-                <Entry Placeholder="Enter Box number" Text="{Binding BoxNumber}" AutomationId="BoxNumberEntry"/>
+                <Entry Placeholder="Enter Box number" Text="{Binding Box.BoxNumber}" AutomationId="BoxNumberEntry"/>
 
                 <Label FontAttributes="Bold" Text="Room:"/>
-                <Picker x:Name="RoomPicker" SelectedIndexChanged="Handle_SelectedIndexChanged" ItemsSource="{Binding Room_List}" SelectedItem="{Binding Room}"></Picker>
-                <!-- 
-                <Label FontAttributes="Bold" Text="Location:"/>
-                <Entry Placeholder="Enter box location" Text="{Binding Location}" AutomationId="LocationEntry"/>
-                -->
+                <Picker x:Name="RoomPicker" SelectedIndexChanged="Handle_SelectedIndexChanged" ItemsSource="{Binding Room_List}" SelectedItem="{Binding Box.Room}"></Picker>
 
+                <Label FontAttributes="Bold" Text="Photo upload coming soon..."/>
+                
                 <Button
                     VerticalOptions="End"
                     HorizontalOptions="End"

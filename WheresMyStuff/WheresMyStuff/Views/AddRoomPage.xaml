@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
@@ -28,11 +28,21 @@
             <StackLayout Padding="5,10">
 
                 <Label FontAttributes="Bold" Text="Name:"/>
-                <Entry Placeholder="Item Name" Text="{Binding Name}" AutomationId="RoomNameEntry"/>
+                <Entry Placeholder="Room Name" Text="{Binding Name}" AutomationId="RoomNameEntry"/>
 
                 <Label FontAttributes="Bold" Text="Description:"/>
                 <Editor BackgroundColor="#e6e6e6" HeightRequest="100" Text="{Binding Description}" AutomationId="RoomDescEditor"/>
 
+                <Label FontAttributes="Bold" Text="Photo upload coming soon..."/>
+                
+                <Button
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Text="Add Photo"/>
+
+                <!-- placeholder image -->
+                <Image Source="default_room"></Image>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

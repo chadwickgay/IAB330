@@ -14,6 +14,16 @@ namespace wheresmystuff.ViewModels
 
         private readonly MyDatabase db;
 
+        private Room _room;
+        public Room Room
+        {
+            get { return _room; }
+            set
+            {
+                _room = value;
+                OnPropertyChanged("Box");
+            }
+        }
 
         private string name;
 
@@ -46,8 +56,12 @@ namespace wheresmystuff.ViewModels
             db = new MyDatabase();
 
             SubmitCommand = new Command(Submit);
+            UpdateCommand = new Command(Update);
         }
 
+        /// <summary>
+        /// Handle inserting a new Room
+        /// </summary>
         public void Submit()
         {
             db.Insert(new Room()
@@ -59,6 +73,16 @@ namespace wheresmystuff.ViewModels
             Description = String.Empty;
 
             MessagingCenter.Send<String>("insert", "refresh");
+        }
+
+        /// <summary>
+        /// Update a Room
+        /// </summary>
+        public ICommand UpdateCommand { protected set; get; }
+        public void Update()
+        {
+            db.InsertOrUpdate(Room);
+            MessagingCenter.Send<String>("update", "refresh");
         }
 
     }

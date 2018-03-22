@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="wheresmystuff.Views.EditRoomsPage"
+    Title="Edit Room">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Save"
+            Text="Save"
+            Order="Primary"
+            Clicked="Handle_Save_Clicked"
+            AutomationId="SaveRoom"
+        Command="{Binding UpdateCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5,10">
+
+                <Image Source="default_room"></Image>
+
+                <Label FontAttributes="Bold" Text="Name:"/>
+                <Entry Text = "{Binding Room.Name}"/>
+
+                <Label FontAttributes="Bold" Text="Description:"/>
+                <Entry Text = "{Binding Room.Description}"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
+

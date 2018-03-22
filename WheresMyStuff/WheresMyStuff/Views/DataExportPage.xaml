@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Image Source="export_icon"></Image>
-            <Button Text="Export Data"></Button>
+            <Button Text="Export Data" Clicked="ExportData"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

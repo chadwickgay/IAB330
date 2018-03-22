@@ -13,15 +13,15 @@ using System.ComponentModel;
 
 namespace wheresmystuff.ViewModels
 {
-
-    //https://www.davidbritch.com/2016/02/behaviours-library-for-xamarinforms_24.html
-
     public class ItemsListViewModel : ViewModelBase
     {
         private readonly MyDatabase _db;
         private ObservableCollection<Item> _items;
         private string _searchText;
 
+        /// <summary>
+        /// Handle searching Items
+        /// </summary>
         public string SearchText
         {
             get { return _searchText; }
@@ -34,7 +34,8 @@ namespace wheresmystuff.ViewModels
 
                 if (!String.IsNullOrWhiteSpace(_searchText))
                 {
-                    Items = new ObservableCollection<Item>(_items.Where(i => i.Name.Contains(_searchText)));
+                    Items = new ObservableCollection<Item>(_items.Where(i => i.Name.Contains(_searchText)
+                                                                        || i.Description.Contains(_searchText)));
                 } 
                 OnPropertyChanged();
             }

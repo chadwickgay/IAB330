@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using wheresmystuff.ViewModels;
 using Xamarin.Forms;
+using wheresmystuff.Models;
 
 namespace wheresmystuff.Views
 {
@@ -9,9 +10,6 @@ namespace wheresmystuff.Views
     {
         void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            //var room = RoomPicker.Items[RoomPicker.SelectedIndex];
-
-           // DisplayAlert(room, "selected value", "OK");
         }
 
         void Handle_Save_Clicked(object sender, System.EventArgs e)
@@ -21,10 +19,11 @@ namespace wheresmystuff.Views
 
         public AddBoxPage()
         {
+            BoxesViewModel vm = new BoxesViewModel();
+            vm.Box = new Box();
+            BindingContext = vm;
+
             InitializeComponent();
-
-            BindingContext = new BoxesViewModel();
-
         }
     }
 }

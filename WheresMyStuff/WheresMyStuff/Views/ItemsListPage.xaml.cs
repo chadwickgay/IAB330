@@ -27,9 +27,7 @@ namespace wheresmystuff.Views
                 return;
             }
 
-            var itemsView = new ItemPage();
-            itemsView.BindingContext = item;
-            Navigation.PushAsync(itemsView);
+            Navigation.PushAsync(new ItemPage(item));
         }
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)

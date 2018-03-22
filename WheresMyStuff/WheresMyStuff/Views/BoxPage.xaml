@@ -2,7 +2,9 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="wheresmystuff.Views.BoxPage">
+    x:Class="wheresmystuff.Views.BoxPage"
+    Title="Box">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Name="Edit"
@@ -26,20 +28,42 @@
                 <Image Source="default_box"></Image>
 
                 <Label FontAttributes="Bold" Text="Description:"/>
-                <Label Text = "{Binding Description}"/>
+                <Label Text = "{Binding Box.Description}"/>
 
                 <Label FontAttributes="Bold" Text="Box Number:"/>
-                <Label Text = "{Binding BoxNumber}"/>
+                <Label Text = "{Binding Box.BoxNumber}"/>
 
                 <Label FontAttributes="Bold" Text="Room:"/>
-                <Label Text = "{Binding Room}"/>
+                <Label Text = "{Binding Box.Room}"/>
 
-                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                <Label FontAttributes="Bold" Text="Items:"/>
+                <ListView x:Name="list" ItemsSource="{Binding Items}" RowHeight="55">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20">
+                                        </RowDefinition>
+                                        <RowDefinition Height="20">
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="40">
+                                        </ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Font="Small" TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                        <Button Text="Label"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                        <Button Text="QR Code"/>
+                        <Button Text="Print Label" Clicked="Handle_Label_Clicked"/>
                     </StackLayout>
                 </StackLayout>
 

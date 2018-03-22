@@ -15,9 +15,7 @@ namespace wheresmystuff.Views
                 return;
             }
 
-            var roomsView = new RoomsPage();
-            roomsView.BindingContext = room;
-            Navigation.PushAsync(roomsView);
+            Navigation.PushAsync(new RoomsPage(room));
         }
 
         public RoomsListPage()

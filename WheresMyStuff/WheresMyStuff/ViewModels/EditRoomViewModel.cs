@@ -14,9 +14,6 @@ namespace wheresmystuff.ViewModels
     {
 
         private readonly MyDatabase db;
-        private ObservableCollection<Room> _rooms;
-        private ObservableCollection<Item> _items;
-        List<string> room_list = new List<string>();
 
         private string room;
         public string Room
@@ -51,102 +48,30 @@ namespace wheresmystuff.ViewModels
             }
         }
 
-        public ICommand SubmitCommand { protected set; get; }
-
-        public void Submit()
-        {
-            db.Insert(new Box()
-            {
-                BoxNumber = BoxNumber,
-                Description = Description,
-                Room = Room
-            });
-            BoxNumber = String.Empty;
-            Description = String.Empty;
-            Room = String.Empty;
-
-            MessagingCenter.Send<String>("insert", "refresh");
-        }
-
-        // To get list of rooms 
-        public ObservableCollection<Room> Rooms
-        {
-            get { return _rooms; }
-            set
-            {
-                _rooms = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public void GetListOfRooms()
-        {
-            Rooms = new ObservableCollection<Room>(db.GetAllRooms());
-
-            foreach (var room in Rooms)
-            {
-                room_list.Add(room.Name);
-            }
-        }
-
-        public List<string> Room_List => room_list;
-
-        // To display respective items on the page
-
-        public ObservableCollection<Item> Items
-        {
-            get { return _items; }
-            set
-            {
-                _items = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public void GetItemsInsideBox()
-        {
-            // Just trying to display all items in the db on the box page
-            Items = new ObservableCollection<Item>(db.GetAllItems());
-
-            OnPropertyChanged();
-        }
-
         // Constructor 
-
         public EditBoxesViewModel()
         {
-
             db = new MyDatabase();
-
-            SubmitCommand = new Command(Submit);
             UpdateCommand = new Command(Update);
-
-            GetListOfRooms();
-
-            GetItemsInsideBox();
-        }
-
-        public EditBoxesViewModel(INavigation navigation) : base(navigation)
-        {
-
-            db = new MyDatabase();
-
         }
 
         // Update box
 
         public ICommand UpdateCommand { protected set; get; }
 
+        /// <summary>
+        /// Handle updating the box
+        /// </summary>
         public void Update()
         {
-            db.InsertOrUpdate(new Box()
+            db.InsertOrUpdate(new Box
             {
                 BoxNumber = BoxNumber,
                 Description = Description,
                 Room = Room
             });
 
-            MessagingCenter.Send<String>("insert", "refresh");
+            MessagingCenter.Send<String>("update", "refresh");
         }
 
     }

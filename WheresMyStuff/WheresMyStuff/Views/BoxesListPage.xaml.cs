@@ -27,9 +27,7 @@ namespace wheresmystuff.Views
                 return;
             }
 
-            var boxesView = new BoxPage();
-            boxesView.BindingContext = box;
-            Navigation.PushAsync(boxesView);
+            Navigation.PushAsync(new BoxPage(box));
         }
     }
 }

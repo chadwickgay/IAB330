@@ -43,7 +43,10 @@
     <Compile Include="Helpers\RoomHelper.cs" />
     <Compile Include="Helpers\BoxHelper.cs" />
     <Compile Include="Interfaces\IFileHelper.cs" />
+    <Compile Include="Interfaces\ISaveAndLoad.cs" />
     <Compile Include="MenuItems\MasterPageItem.cs" />
+    <Compile Include="Models\WheresMyStuffExport.cs" />
+    <Compile Include="ViewModels\DataExportModel.cs" />
     <Compile Include="WheresMyStuffPage.xaml.cs">
       <DependentUpon>WheresMyStuffPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,15 @@
       <DependentUpon>EditBoxPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EditRoomViewModel.cs" />
+    <Compile Include="Views\EditItemPage.xaml.cs">
+      <DependentUpon>EditItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditRoomsPage.xaml.cs">
+      <DependentUpon>EditRoomsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BoxLabelPage.xaml.cs">
+      <DependentUpon>BoxLabelPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WheresMyStuffPage.xaml">
@@ -105,6 +117,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditBoxPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditItemPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditRoomsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BoxLabelPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

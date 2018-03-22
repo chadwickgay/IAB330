@@ -5,8 +5,10 @@ using System.Text;
 using SQLite.Net.Attributes;
 
 namespace wheresmystuff.Models
-
 {
+    /// <summary>
+    /// An Item is placed in a Box
+    /// </summary>
     public class Item
     {
         [PrimaryKey]
@@ -16,7 +18,6 @@ namespace wheresmystuff.Models
         public string Name { get; set; }
         public string BoxNumber { get; set; }
         public string Description { get; set; }
-        //URL for our item image!
         public string Image { get; set; }
     }
 }

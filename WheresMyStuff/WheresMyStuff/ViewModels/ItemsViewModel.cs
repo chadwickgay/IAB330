@@ -17,6 +17,16 @@ namespace wheresmystuff.ViewModels
         private ObservableCollection<Box> _boxes;
         List<string> box_list = new List<string>();
 
+        private Item _item;
+        public Item Item
+        {
+            get { return _item; }
+            set
+            {
+                _item = value;
+                OnPropertyChanged("Item");
+            }
+        }
 
         private string box;
         public string Box
@@ -67,14 +77,15 @@ namespace wheresmystuff.ViewModels
         public ICommand SubmitCommand { protected set; get; }
         public ItemsViewModel()
         {
-
             _db = new MyDatabase();
-
             SubmitCommand = new Command(Submit);
-
+            UpdateCommand = new Command(Update);
             GetListOfBoxNumbers();
         }
 
+        /// <summary>
+        /// Handle inserting a new Item
+        /// </summary>
         public void Submit()
         {
             _db.Insert(new Item()
@@ -89,6 +100,16 @@ namespace wheresmystuff.ViewModels
             Description = String.Empty;
 
             MessagingCenter.Send<String>("insert", "refresh");
+        }
+
+        /// <summary>
+        /// Handle updating an Item
+        /// </summary>
+        public ICommand UpdateCommand { protected set; get; }
+        public void Update()
+        {
+            _db.InsertOrUpdate(Item);
+            MessagingCenter.Send<String>("update", "refresh");
         }
 
         public ObservableCollection<Box> Boxes

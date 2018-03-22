@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="wheresmystuff.Views.EditItemPage"
+    xmlns:local="clr-namespace:wheresmystuff.Views;assembly=wheresmystuff.Views"
+    Title="Edit Item">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Save"
+            Text="Save"
+            Order="Primary"
+            Clicked="Handle_Save_Clicked"
+            AutomationId="SaveItem"
+        Command="{Binding UpdateCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5,10">
+
+                <!-- placeholder image -->
+                <Image Source="default_item"></Image>
+
+                <Label FontAttributes="Bold" Text="Name:"/>
+                <Entry Text = "{Binding Item.Name}"/>
+
+                <Label FontAttributes="Bold" Text="Description:"/>
+                <Entry Text = "{Binding Item.Description}"/>
+
+                <Label FontAttributes="Bold" Text="Box Number:"/>
+                <Entry Text = "{Binding Item.BoxNumber}"/>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

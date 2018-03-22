@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using SQLite.Net.Attributes;
+﻿using SQLite.Net.Attributes;
 
 namespace wheresmystuff.Models
-
 {
+    /// <summary>
+    /// A Box contains Items and is located in a Room.
+    /// </summary>
     public class Box
     {
         [PrimaryKey]
@@ -17,7 +15,6 @@ namespace wheresmystuff.Models
         public string Room { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
-        //URL for our item image!
         public string Image { get; set; }
 
     }

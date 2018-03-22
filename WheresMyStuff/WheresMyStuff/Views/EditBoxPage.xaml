@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="wheresmystuff.Views.EditBoxPage"
+    xmlns:local="clr-namespace:wheresmystuff.Views;assembly=wheresmystuff.Views"
     Title="Edit Box">
 
     <ContentPage.ToolbarItems>
@@ -30,13 +31,13 @@
                 <Image Source="default_box"></Image>
 
                 <Label FontAttributes="Bold" Text="Description:"/>
-                <Entry Text = "{Binding Description}"/>
+                <Entry Text = "{Binding Box.Description}"/>
 
                 <Label FontAttributes="Bold" Text="Box Number:"/>
-                <Entry Text = "{Binding BoxNumber}"/>
+                <Entry Text = "{Binding Box.BoxNumber}"/>
 
                 <Label FontAttributes="Bold" Text="Room:"/>
-                <Entry Text = "{Binding Room}"/>
+                <Entry Text = "{Binding Box.Room}"/>
 
             </StackLayout>
         </ScrollView>

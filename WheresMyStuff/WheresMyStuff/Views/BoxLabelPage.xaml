@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="wheresmystuff.Views.BoxLabelPage"
+    Title="Label">
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,0,0,0"
+            Android="0,0,0,0"
+            WinPhone="0,0,0,0" />
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5,10">
+
+                <!-- placeholder QR code used -->
+                <Image Source="default_qrcode"></Image>
+
+                <Label FontAttributes="Bold" Text="Description:"/>
+                <Label Text = "{Binding Box.Description}"/>
+
+                <Label FontAttributes="Bold" Text="Box Number:"/>
+                <Label Text = "{Binding Box.BoxNumber}"/>
+
+                <Label FontAttributes="Bold" Text="Room:"/>
+                <Label Text = "{Binding Box.Room}"/>
+
+                <Label FontAttributes="Bold" Text="Items:"/>
+                <ListView x:Name="list" ItemsSource="{Binding Items}" RowHeight="55">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20">
+                                        </RowDefinition>
+                                        <RowDefinition Height="20">
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*">
+                                        </ColumnDefinition>
+                                        <ColumnDefinition Width="40">
+                                        </ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" LineBreakMode="TailTruncation"></Label>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" Font="Small" TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

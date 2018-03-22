@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="SaveAndLoad_iOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +120,9 @@
     <BundleResource Include="Resources\default_box.png" />
     <BundleResource Include="Resources\export_icon.png" />
     <BundleResource Include="Resources\hamburger.png" />
+    <BundleResource Include="Resources\default_room.png" />
+    <BundleResource Include="Resources\default_item.png" />
+    <BundleResource Include="Resources\default_qrcode.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLite-net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -165,9 +169,7 @@
       <Name>wheresmystuff</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
